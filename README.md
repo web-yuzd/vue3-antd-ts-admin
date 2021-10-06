@@ -1,5 +1,17 @@
 # vue-logistics-admin
 
+物流管理后台
+
+# 技术栈
+
+```
+vue3
+typescript
+vue-router
+vuex
+ant-design-vue
+```
+
 ## Project setup
 ```
 yarn install
