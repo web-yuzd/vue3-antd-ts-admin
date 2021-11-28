@@ -1,9 +1,9 @@
-// import { IAppState } from './modules/app'
+import { IAppState } from './modules/app/state'
 import { IUserState } from './modules/user'
 import { IPermissionState } from './modules/permission/state'
 
 export interface RootState {
-  // app: IAppState
+  app: IAppState
   user: IUserState
   permission: IPermissionState
 }

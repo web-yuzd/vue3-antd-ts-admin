@@ -7,4 +7,6 @@ file.keys().forEach((key) => {
   modules[name] = file(key).default
 })
 
+console.log(modules)
+
 export default modules

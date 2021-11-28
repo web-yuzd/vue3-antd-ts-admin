@@ -5,14 +5,7 @@
       <siderbar :collapsed="collapsed"></siderbar>
     </a-layout-sider>
     <a-layout>
-      <a-layout-header style="background: #fff; padding: 0">
-        <menu-unfold-outlined
-          v-if="collapsed"
-          class="trigger"
-          @click="() => (collapsed = !collapsed)"
-        />
-        <menu-fold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)" />
-      </a-layout-header>
+      <LayoutHeader></LayoutHeader>
       <a-layout-content>
         <router-view></router-view>
       </a-layout-content>
@@ -22,23 +15,25 @@
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue'
 import { Layout } from 'ant-design-vue'
+import { useStore } from '@/store'
 import Logo from './Logo/index.vue'
-import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons-vue'
-
 import Siderbar from './Siderbar/index.vue'
+import LayoutHeader from './Header/index.vue'
+
 export default defineComponent({
   components: {
     Logo,
-    MenuUnfoldOutlined,
-    MenuFoldOutlined,
     Siderbar,
+    LayoutHeader,
     [Layout.name]: Layout,
     [Layout.Header.name]: Layout.header,
     [Layout.Content.name]: Layout.Content,
     [Layout.Sider.name]: Layout.Sider
   },
   setup() {
-    const collapsed = ref<boolean>(false)
+    const store = useStore()
+
+    const collapsed = computed(() => store.state.app.collapsed)
     // 自定义侧边栏菜单收缩和展开时的宽度
     const asiderWidth = computed(() => (collapsed.value ? 80 : 208))
 

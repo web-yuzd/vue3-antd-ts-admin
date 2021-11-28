@@ -1,9 +1,11 @@
-import state from './state'
-import mutations from './mutations'
-import actions from './actions'
+import { state } from './state'
+import { mutations } from './mutations'
+import { actions } from './actions'
+
+export type { IAppState } from './state'
 
 export default {
-  namespace: true,
+  namespaced: true,
   state,
   mutations,
   actions
